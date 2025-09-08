@@ -1,0 +1,1 @@
+apple,banana,computer,python,laptop,orange,table,chair, window,bottle,phone,mouse,keyboard,screen,book,pencil,paper,clock,light,door,car,bus,train,river,mountain,tree,flower,grass,cloud,rain,sun,moon,star,planet,ocean,fish,bird,dog,cat,horse,sheep,cow,tiger,lion,bear,wolf,fox,deer,frog,bee

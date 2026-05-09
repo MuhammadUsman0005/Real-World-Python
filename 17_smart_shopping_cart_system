@@ -1,0 +1,78 @@
+store = {
+    "Bread" : 120,
+    "Milk" : 180,
+    "Eggs (12)" : 260,
+    "Chicken" : 900,
+    "Rice (1kg)" : 340,
+    "Soap" : 80,
+    "Shampoo" : 250
+}
+
+cart = []
+print("======= SHOPPING CART SYSTEM =======")
+print("1. Show items")
+print("2. Add item to cart")
+print("3. Remove item from cart")
+print("4. View cart")
+print("5. Checkout")
+
+while True:
+    choice = int(input("Enter your choice: "))
+    # show items
+    if choice == 1:
+        print("\nAvailable items:")
+        for item, price in store.items():
+            print(f"{item} : {price}")
+    # add item to cart
+    elif choice == 2:
+        item_name = input("Enter item name: ").strip()
+        if item_name in store:
+            cart.append(item_name)
+            print("Added:", item_name)
+        else:
+            print("Item not found!")
+    # remove item
+    elif choice == 3:
+        item_name = input("Enter item name: ").strip()
+        if item_name in cart:
+            cart.remove(item_name)
+            print("Removed:", item_name)
+        else:
+            print("Item not in cart!")
+    # view cart
+    elif choice == 4:
+        if len(cart) == 0:
+            print("Cart is empty!")
+        else:
+            print("\nYour cart:")
+            for item in cart:
+                print(item)
+    # checkout
+    elif choice == 5:
+        if len(cart) == 0:
+            print("Cart is empty. Nothing to bill.")
+            break
+
+        total = sum(store[item] for item in cart)
+
+        # discount rules
+        if total >= 2000:
+            discount = total * (15/100)
+        elif total >= 1000:
+            discount = total * (10/100)
+        else:
+            discount = 0
+        # expensive item in the cart
+        most_expensive_item = max(cart, key=lambda item : store[item])
+
+        final = total - discount
+        print("===== BILL =====")
+        print(f"Total number of items: {len(cart)}")
+        print(f"Expensive item: {most_expensive_item}")
+        print("Total: ",total)
+        print("Discount: ",discount)
+        print("Final Amount: ",final)
+        print("<->->-> THANK YOU FOR SHOPPING <-<-<->")
+        break
+    else:
+        print("Invalid choice!")
